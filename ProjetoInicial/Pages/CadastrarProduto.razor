@@ -1,0 +1,51 @@
+﻿@page "/"
+@* @page "/cadastrarproduto" *@
+
+@using ProjetoInicial.Models
+
+<Titulo Texto="Cadastro de Produto"></Titulo>
+<Mensagem Msg="@msg"></Mensagem>
+
+<label class="text-muted mt-3">Nome:</label>
+<input @bind-value=produto.Nome class="form-control"/>
+
+<label class="text-muted mt-3">Preço:</label>
+<input @bind-value=produto.Preco class="form-control" />
+
+<label class="text-muted mt-3">Quantidade:</label>
+<input @bind-value=produto.Quantidade class="form-control" />
+
+<button class="mt-3 btn btn-primary" @onclick="Incluir">Incluir</button>
+
+<div class="p-5 border shadow mt-3">
+    <h4 class="text-center">Produto Cadastrado</h4>
+    @produto.Nome
+    <br />
+    @produto.Preco
+    <br />
+    @produto.Quantidade
+    <br />
+    @produto.ValorEstoqueTotal()
+    <br />
+</div>
+
+<button @onclick="ColocaDados" class="btn btn-primary mt-3">
+    Coloca Dados
+</button>
+
+@code {
+    Produto produto = new Produto();
+    private string msg = "";
+
+    private void ColocaDados()
+    {
+        produto.Nome = "Caneta";
+        produto.Preco = 10;
+        produto.Quantidade = 7;
+    }
+
+    private void Incluir()
+    {
+        msg = "Produto cadastrado!";
+    }
+}

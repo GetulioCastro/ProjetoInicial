@@ -1,0 +1,46 @@
+﻿@page "/teste"
+
+<Titulo Texto="@nome"></Titulo>
+
+<h1 class="@minhaClasse" style="@meuEstilo">
+    @nome
+</h1>
+
+<div>
+    <label class="text-muted">Digite seu nome:</label>
+    <input class="form-control" @bind-value=nome />
+</div>
+
+<div class="mt-3">
+    <button @onclick="Mudar" class="btn btn-outline-dark">Mudar Título</button>
+</div>
+
+<div class="row border mt-3">
+    <div class="col bg-primary">
+        Coluna 1
+    </div>
+    <div class="col bg-success">
+        Coluna 2
+    </div>
+    <div class="col bg-warning">
+        Coluna 3
+    </div>
+</div>
+
+<div class="mt-3 p-5 shadow">
+    <h1>Este é um texto do tamanho H1</h1>
+</div>
+
+@code{
+    string nome = "Getúlio Castro Jr";
+
+    string minhaClasse = "";
+
+    string meuEstilo = "";
+
+    void Mudar(){
+        nome = "Título Exemplo";
+        minhaClasse = "text-danger";
+        meuEstilo = "font-size: 3rem";
+    }
+}
